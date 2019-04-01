@@ -6,13 +6,20 @@
   "scripts": {
     "start": "node index",
     "dev": "DEBUG=union:* node index",
-    "lint": "eslint 'core/**/*.js' '*.js'"
+    "lint": "eslint 'core/**/*.js' '*.js'",
+    "migrate": "knex migrate:latest --knexfile ./core/db/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile ./core/db/knexfile.js"
   },
   "author": "Tiago Alves <alvesjtiago@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "bookshelf": "^0.14.2",
     "debug": "^4.1.1",
-    "express": "^4.16.4"
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "knex": "0.13",
+    "pg": "^7.9.0"
   },
   "devDependencies": {
     "eslint": "^5.15.2",
