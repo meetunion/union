@@ -1,5 +1,5 @@
 const express = require('express');
-const { Union } = require('../db');
+const { Union } = require('../../db');
 
 const unionsRoutes = express.Router();
 
