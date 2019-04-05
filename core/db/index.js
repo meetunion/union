@@ -17,9 +17,4 @@ const knex = require('knex')(dbConfig);
 // db exported instance
 const db = bookshelf(knex);
 
-// Models
-const Union = db.Model.extend({
-  tableName: 'unions',
-});
-
-module.exports = { db, Union };
+module.exports = db;
