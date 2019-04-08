@@ -12,3 +12,7 @@ passport.use(new BearerStrategy(
       });
   },
 ));
+
+const tokenAuth = passport.authenticate('bearer', { session: false });
+
+module.exports = tokenAuth;

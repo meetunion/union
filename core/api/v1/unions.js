@@ -1,10 +1,16 @@
 const express = require('express');
-const passport = require('passport');
+const tokenAuth = require('../../auth/token');
+
+const Union = require('../../models/union');
 
 const unionsRoutes = express.Router();
 
-unionsRoutes.get('/', passport.authenticate('bearer', { session: false }), (req, res) => {
-  req.user.union().fetch().then((union) => {
+// We're only dealing with a single Union right now so it should always
+// be referring to the first instance.
+
+// Get first union
+unionsRoutes.get('/', tokenAuth, (req, res) => {
+  Union.query({ orderBy: ['id', 'asc'] }).fetch().then((union) => {
     res.json(union.toJSON());
   });
 });
