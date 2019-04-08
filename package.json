@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "DEBUG=union:* node index",
+    "dev": "nodemon --exec DEBUG=union:* node index",
     "lint": "eslint 'core/**/*.js' '*.js'",
     "migrate": "knex migrate:latest --knexfile ./core/db/knexfile.js",
     "rollback": "knex migrate:rollback --knexfile ./core/db/knexfile.js"
@@ -28,6 +28,7 @@
   "devDependencies": {
     "eslint": "^5.15.2",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
   }
 }

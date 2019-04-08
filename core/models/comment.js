@@ -1,15 +1,15 @@
 const db = require('../db');
-const Post = require('./post');
-const User = require('./user');
+require('./post');
+require('./user');
 
 const Comment = db.Model.extend({
   tableName: 'comments',
   post() {
-    this.belongsTo(Post);
+    this.belongsTo('Post');
   },
   user() {
-    this.belongsTo(User);
+    this.belongsTo('User');
   },
 });
 
-module.exports = Comment;
+module.exports = db.model('Comment', Comment);

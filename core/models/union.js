@@ -1,27 +1,27 @@
 const db = require('../db');
-const Admins = require('./admin');
-const Users = require('./user');
-const Posts = require('./post');
-const Tiers = require('./tier');
-const Payments = require('./payment');
+require('./admin');
+require('./user');
+require('./post');
+require('./tier');
+require('./payment');
 
 const Union = db.Model.extend({
   tableName: 'unions',
   posts() {
-    return this.hasMany(Posts);
+    return this.hasMany('Post');
   },
   admins() {
-    return this.hasMany(Admins);
+    return this.hasMany('Admin');
   },
   users() {
-    return this.hasMany(Users);
+    return this.hasMany('User');
   },
   tiers() {
-    return this.hasMany(Tiers);
+    return this.hasMany('Tier');
   },
   payments() {
-    return this.hasMany(Payments);
+    return this.hasMany('Payment');
   },
 });
 
-module.exports = Union;
+module.exports = db.model('Union', Union);

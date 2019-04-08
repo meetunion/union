@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const db = require('../db');
-const Union = require('./union');
+require('./union');
 
 const Admin = db.Model.extend({
   tableName: 'admins',
   union() {
-    this.belongsTo(Union);
+    return this.belongsTo('Union', 'union_id');
   },
   verifyPassword(password) {
     const encryptedPassword = this.get('encrypted_password');
@@ -13,4 +13,4 @@ const Admin = db.Model.extend({
   },
 });
 
-module.exports = Admin;
+module.exports = db.model('Admin', Admin);

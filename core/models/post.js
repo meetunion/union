@@ -1,11 +1,11 @@
 const db = require('../db');
-const Union = require('./union');
+require('./union');
 
 const Post = db.Model.extend({
   tableName: 'posts',
   union() {
-    this.belongsTo(Union);
+    this.belongsTo('Union');
   },
 });
 
-module.exports = Post;
+module.exports = db.model('Post', Post);

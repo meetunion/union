@@ -1,19 +1,19 @@
 const db = require('../db');
-const Union = require('./union');
-const Comments = require('./comment');
-const Payments = require('./payment');
+require('./union');
+require('./comment');
+require('./payment');
 
 const User = db.Model.extend({
   tableName: 'users',
   union() {
-    this.belongsTo(Union);
+    this.belongsTo('Union');
   },
   comments() {
-    return this.hasMany(Comments);
+    return this.hasMany('Comment');
   },
   payments() {
-    return this.hasMany(Payments);
+    return this.hasMany('Payment');
   },
 });
 
-module.exports = User;
+module.exports = db.model('User', User);

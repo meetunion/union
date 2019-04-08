@@ -11,6 +11,7 @@ authRoutes.post('/login', (req, res) => {
         admin,
       });
     }
+
     return res.json({
       email: admin.get('email'),
       auth_token: admin.get('auth_token'),
