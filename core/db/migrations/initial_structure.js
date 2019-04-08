@@ -22,6 +22,7 @@ exports.up = (knex) => {
       table.string('name');
       table.string('email');
       table.string('encrypted_password');
+      table.string('auth_token');
     })
     .createTable('users', (table) => {
       table.increments('id').primary();
@@ -29,6 +30,7 @@ exports.up = (knex) => {
       table.string('name');
       table.string('email');
       table.string('encrypted_password');
+      table.string('auth_token');
     })
     .createTable('tiers', (table) => {
       table.increments('id').primary();

@@ -10,6 +10,8 @@ app.use(api);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+require('./auth');
+
 function startUnion() {
   app.listen(port, () => debug(`Listening on port ${port}`));
 }
