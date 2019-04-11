@@ -11,4 +11,15 @@ paymentsRoutes.get('/', tokenAuth, (req, res) => {
   });
 });
 
+paymentsRoutes.get('/:id', tokenAuth, (req, res) => {
+  Payment.forge({ id: req.params.id })
+    .fetch()
+    .then((payment) => {
+      res.json(payment.toJSON());
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = paymentsRoutes;
