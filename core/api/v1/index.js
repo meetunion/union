@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.use('/', homeRoutes);
 router.use('/auth', authRoutes);
-router.use('/union', unionsRoutes);
+router.use('/unions', unionsRoutes);
 router.use('/payments', paymentsRoutes);
 router.use('/posts', postsRoutes);
 router.use('/tiers', tiersRoutes);
