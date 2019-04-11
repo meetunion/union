@@ -5,6 +5,7 @@ require('./payment');
 
 const User = db.Model.extend({
   tableName: 'users',
+  hidden: ['encrypted_password'],
   union() {
     this.belongsTo('Union');
   },

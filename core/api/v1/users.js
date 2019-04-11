@@ -7,8 +7,19 @@ const usersRoutes = express.Router();
 
 usersRoutes.get('/', tokenAuth, (req, res) => {
   User.fetchAll().then((users) => {
-    res.json(users.toJSON());
+    res.json(users);
   });
+});
+
+usersRoutes.get('/:id', tokenAuth, (req, res) => {
+  User.forge({ id: req.params.id })
+    .fetch()
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = usersRoutes;

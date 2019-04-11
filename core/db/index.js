@@ -17,5 +17,6 @@ const knex = require('knex')(dbConfig);
 // db exported instance
 const db = bookshelf(knex);
 db.plugin('registry');
+db.plugin('visibility');
 
 module.exports = db;
