@@ -59,6 +59,9 @@ tiersRoutes.put('/:id', tokenAuth, (req, res) => {
         .catch((err) => {
           res.status(500).json({ error: err.message });
         });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
     });
 });
 
@@ -73,6 +76,9 @@ tiersRoutes.delete('/:id', tokenAuth, (req, res) => {
         .catch((err) => {
           res.status(500).json({ error: err.message });
         });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
     });
 });
 
