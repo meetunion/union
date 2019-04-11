@@ -8,7 +8,7 @@ const tiersRoutes = express.Router();
 
 tiersRoutes.get('/', tokenAuth, (req, res) => {
   Tier.fetchAll().then((tiers) => {
-    res.json(tiers.toJSON());
+    res.json(tiers);
   });
 });
 
@@ -23,7 +23,7 @@ tiersRoutes.post('/', tokenAuth, (req, res) => {
     })
       .save()
       .then((tier) => {
-        res.json(tier.toJSON());
+        res.json(tier);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -35,7 +35,7 @@ tiersRoutes.get('/:id', tokenAuth, (req, res) => {
   Tier.forge({ id: req.params.id })
     .fetch()
     .then((tier) => {
-      res.json(tier.toJSON());
+      res.json(tier);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

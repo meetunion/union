@@ -11,7 +11,7 @@ const unionRoutes = express.Router();
 // Get first union
 unionRoutes.get('/', tokenAuth, (req, res) => {
   Union.query({ orderBy: ['id', 'asc'] }).fetch().then((union) => {
-    res.json(union.toJSON());
+    res.json(union);
   });
 });
 

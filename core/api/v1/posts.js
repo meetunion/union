@@ -8,7 +8,7 @@ const postsRoutes = express.Router();
 
 postsRoutes.get('/', tokenAuth, (req, res) => {
   Post.fetchAll().then((posts) => {
-    res.json(posts.toJSON());
+    res.json(posts);
   });
 });
 
@@ -21,7 +21,7 @@ postsRoutes.post('/', tokenAuth, (req, res) => {
     })
       .save()
       .then((post) => {
-        res.json(post.toJSON());
+        res.json(post);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -33,7 +33,7 @@ postsRoutes.get('/:id', tokenAuth, (req, res) => {
   Post.forge({ id: req.params.id })
     .fetch()
     .then((post) => {
-      res.json(post.toJSON());
+      res.json(post);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
