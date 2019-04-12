@@ -45,7 +45,7 @@ postsRoutes.put('/:id', tokenAuth, (req, res) => {
     .fetch()
     .then((post) => {
       post.save({
-        union_id: post.get('union_id'),
+        union_id: req.body.union_id || post.get('union_id'),
         title: req.body.title || post.get('title'),
         content: req.body.content || post.get('content'),
       })
