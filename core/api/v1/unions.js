@@ -9,7 +9,7 @@ const unionRoutes = express.Router();
 // be referring to the first instance.
 
 // Get first union
-unionRoutes.get('/', tokenAuth, (req, res) => {
+unionRoutes.get('/', (req, res) => {
   Union.query({ orderBy: ['id', 'asc'] }).fetch().then((union) => {
     res.json(union);
   });
