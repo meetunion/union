@@ -17,7 +17,7 @@ app.use(api);
 require('./auth');
 
 function startUnion() {
-  app.listen(port, () => debug(`Listening on port ${port}`));
+  app.listen(process.env.PORT || port, () => debug(`Listening on port ${port}`));
 }
 
 module.exports = startUnion;
