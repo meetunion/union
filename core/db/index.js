@@ -1,21 +1,14 @@
 const bookshelf = require('bookshelf');
+const knex = require('knex');
 
-const dbConfig = {
-  client: 'postgresql',
-  connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    charset: 'utf8',
-  },
-};
+const environment = process.env.ENVIRONMENT || 'development';
+const config = require('./knexfile.js')[environment];
 
 // knex connection to database
-const knex = require('knex')(dbConfig);
+const knexInstance = knex(config);
 
 // db exported instance
-const db = bookshelf(knex);
+const db = bookshelf(knexInstance);
 db.plugin('registry');
 db.plugin('visibility');
 
