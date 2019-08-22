@@ -1,20 +1,17 @@
-const db = require('../db');
-require('./union');
-require('./comment');
-require('./payment');
+import db from '../db'
 
 const User = db.Model.extend({
   tableName: 'users',
   hidden: ['encrypted_password'],
   union() {
-    this.belongsTo('Union');
+    this.belongsTo('Union')
   },
   comments() {
-    return this.hasMany('Comment');
+    return this.hasMany('Comment')
   },
   payments() {
-    return this.hasMany('Payment');
+    return this.hasMany('Payment')
   },
-});
+})
 
-module.exports = db.model('User', User);
+module.exports = db.model('User', User)

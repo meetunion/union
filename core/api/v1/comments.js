@@ -1,15 +1,14 @@
-const express = require('express');
-const tokenAuth = require('../../auth/token');
+import express from 'express'
+import tokenAuth from '../../auth/token'
+import Comment from '../../models/comment'
 
-const Comment = require('../../models/comment');
-
-const commentsRoutes = express.Router();
+const commentsRoutes = express.Router()
 
 commentsRoutes.get('/', tokenAuth, (req, res) => {
   Comment.fetchAll().then((comments) => {
-    res.json(comments);
-  });
-});
+    res.json(comments)
+  })
+})
 
 commentsRoutes.post('/', tokenAuth, (req, res) => {
   Comment.forge({
@@ -20,59 +19,61 @@ commentsRoutes.post('/', tokenAuth, (req, res) => {
   })
     .save()
     .then((comment) => {
-      res.json(comment);
+      res.json(comment)
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+      res.status(500).json({ error: err.message })
+    })
+})
 
 commentsRoutes.get('/:id', tokenAuth, (req, res) => {
   Comment.forge({ id: req.params.id })
     .fetch()
     .then((comment) => {
-      res.json(comment);
+      res.json(comment)
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+      res.status(500).json({ error: err.message })
+    })
+})
 
 commentsRoutes.put('/:id', tokenAuth, (req, res) => {
   Comment.forge({ id: req.params.id })
     .fetch()
     .then((comment) => {
-      comment.save({
-        title: req.body.title || comment.get('title'),
-        content: req.body.content || comment.get('content'),
-      })
+      comment
+        .save({
+          title: req.body.title || comment.get('title'),
+          content: req.body.content || comment.get('content'),
+        })
         .then(() => {
-          res.json({ message: 'Comment successfully updated' });
+          res.json({ message: 'Comment successfully updated' })
         })
         .catch((err) => {
-          res.status(500).json({ error: err.message });
-        });
+          res.status(500).json({ error: err.message })
+        })
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+      res.status(500).json({ error: err.message })
+    })
+})
 
 commentsRoutes.delete('/:id', tokenAuth, (req, res) => {
   Comment.forge({ id: req.params.id })
     .fetch()
     .then((comment) => {
-      comment.destroy()
+      comment
+        .destroy()
         .then(() => {
-          res.json({ message: 'Comment successfully destroyed' });
+          res.json({ message: 'Comment successfully destroyed' })
         })
         .catch((err) => {
-          res.status(500).json({ error: err.message });
-        });
+          res.status(500).json({ error: err.message })
+        })
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
+      res.status(500).json({ error: err.message })
+    })
+})
 
-module.exports = commentsRoutes;
+export default commentsRoutes

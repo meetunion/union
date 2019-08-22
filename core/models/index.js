@@ -1,12 +1,12 @@
-const Union = require('./union');
-const Admin = require('./admin');
-const Post = require('./post');
-const Comment = require('./comment');
-const Payment = require('./payment');
-const Tier = require('./tier');
-const User = require('./user');
+import Union from './union'
+import Admin from './admin'
+import Post from './post'
+import Comment from './comment'
+import Payment from './payment'
+import Tier from './tier'
+import User from './user'
 
-module.exports = {
+export default {
   Union,
   Post,
   Comment,
@@ -14,4 +14,4 @@ module.exports = {
   Tier,
   User,
   Admin,
-};
+}

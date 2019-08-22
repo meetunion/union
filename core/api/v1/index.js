@@ -1,23 +1,23 @@
-const express = require('express');
+import express from 'express'
 
-const homeRoutes = require('./home');
-const authRoutes = require('./auth');
-const unionRoutes = require('./unions');
-const paymentsRoutes = require('./payments');
-const postsRoutes = require('./posts');
-const commentsRoutes = require('./comments');
-const tiersRoutes = require('./tiers');
-const usersRoutes = require('./users');
+import authRoutes from './auth'
+import unionRoutes from './unions'
+import homeRoutes from './home'
+import paymentsRoutes from './payments'
+import postsRoutes from './posts'
+import commentsRoutes from './comments'
+import tiersRoutes from './tiers'
+import usersRoutes from './users'
 
-const router = express.Router();
+const router = express.Router()
 
-router.use('/', homeRoutes);
-router.use('/auth', authRoutes);
-router.use('/union', unionRoutes);
-router.use('/payments', paymentsRoutes);
-router.use('/posts', postsRoutes);
-router.use('/comments', commentsRoutes);
-router.use('/tiers', tiersRoutes);
-router.use('/users', usersRoutes);
+router.use('/', homeRoutes)
+router.use('/auth', authRoutes)
+router.use('/union', unionRoutes)
+router.use('/payments', paymentsRoutes)
+router.use('/posts', postsRoutes)
+router.use('/comments', commentsRoutes)
+router.use('/tiers', tiersRoutes)
+router.use('/users', usersRoutes)
 
-module.exports = router;
+module.exports = router

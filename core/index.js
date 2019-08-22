@@ -1,23 +1,23 @@
-const debug = require('debug')('union:core');
-const bodyParser = require('body-parser');
-const express = require('express');
-const cors = require('cors');
-const api = require('./api');
+import bodyParser from 'body-parser'
+import express from 'express'
+import cors from 'cors'
+import log from './utils/logger'
+import api from './api'
 
-const app = express();
-const port = 3000;
+const app = express()
+const port = 3000
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(cors());
+app.use(cors())
 
-app.use(api);
+app.use(api)
 
-require('./auth');
+require('./auth')
 
 function startUnion() {
-  app.listen(process.env.PORT || port, () => debug(`Listening on port ${port}`));
+  app.listen(process.env.PORT || port, () => log(`Listening on port ${port}`))
 }
 
-module.exports = startUnion;
+export default startUnion

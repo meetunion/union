@@ -1,7 +1,10 @@
-// Update with your config settings.
+import dotenv from 'dotenv'
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config()
+}
 
 module.exports = {
-
   development: {
     client: 'postgresql',
     connection: {
@@ -28,5 +31,4 @@ module.exports = {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
   },
-
-};
+}

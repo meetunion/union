@@ -1,15 +1,13 @@
-const db = require('../db');
-require('./union');
-require('./user');
+import db from '../db'
 
 const Payment = db.Model.extend({
   tableName: 'payments',
   union() {
-    this.belongsTo('Union');
+    this.belongsTo('Union')
   },
   user() {
-    this.belongsTo('User');
+    this.belongsTo('User')
   },
-});
+})
 
-module.exports = db.model('Payment', Payment);
+export default db.model('Payment', Payment)

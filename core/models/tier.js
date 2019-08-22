@@ -1,11 +1,10 @@
-const db = require('../db');
-require('./union');
+import db from '../db'
 
 const Tier = db.Model.extend({
   tableName: 'tiers',
   union() {
-    this.belongsTo('Union');
+    this.belongsTo('Union')
   },
-});
+})
 
-module.exports = db.model('Tier', Tier);
+export default db.model('Tier', Tier)

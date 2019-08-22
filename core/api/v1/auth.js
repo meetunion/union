@@ -1,7 +1,7 @@
-const passport = require('passport');
-const express = require('express');
+import passport from 'passport'
+import express from 'express'
 
-const authRoutes = express.Router();
+const authRoutes = express.Router()
 
 authRoutes.post('/login', (req, res) => {
   passport.authenticate('local', { session: false }, (err, admin, info) => {
@@ -9,14 +9,14 @@ authRoutes.post('/login', (req, res) => {
       return res.status(400).json({
         info,
         admin,
-      });
+      })
     }
 
     return res.json({
       email: admin.get('email'),
       auth_token: admin.get('auth_token'),
-    });
-  })(req, res);
-});
+    })
+  })(req, res)
+})
 
-module.exports = authRoutes;
+export default authRoutes

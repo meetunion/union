@@ -1,2 +1,2 @@
-require('./admin');
-require('./token');
+import './admin'
+import './token'

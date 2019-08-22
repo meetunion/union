@@ -1,16 +1,15 @@
-const bcrypt = require('bcrypt');
-const db = require('../db');
-require('./union');
+import bcrypt from 'bcrypt'
+import db from '../db'
 
 const Admin = db.Model.extend({
   tableName: 'admins',
   union() {
-    return this.belongsTo('Union', 'union_id');
+    return this.belongsTo('Union', 'union_id')
   },
   verifyPassword(password) {
-    const encryptedPassword = this.get('encrypted_password');
-    return bcrypt.compareSync(password, encryptedPassword);
+    const encryptedPassword = this.get('encrypted_password')
+    return bcrypt.compareSync(password, encryptedPassword)
   },
-});
+})
 
-module.exports = db.model('Admin', Admin);
+export default db.model('Admin', Admin)

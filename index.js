@@ -1,10 +1,10 @@
+import dotenv from 'dotenv'
+import log from './core/utils/logger'
+import union from './core'
+
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config(); // eslint-disable-line global-require
+  dotenv.config()
 }
 
-const debug = require('debug')('union:core');
-const union = require('./core');
-
-debug('Starting Union');
-
-union();
+log('Starting Union')
+union()

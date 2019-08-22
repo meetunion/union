@@ -2,16 +2,23 @@
 
 This is the core repository for Union.
 
-*Note: Very early stage work in progress.*
+_Note: Very early stage work in progress._
 
 ## Development
 
 ### Project setup
+
 ```
 yarn install
 ```
 
 Create a PostgreSQL database for Union and setup a `.env` file with the database connection properties. Example:
+
+```
+$ psql postgres
+postgres=# CREATE DATABASE union_development;
+```
+
 ```
 DB_CLIENT='pg'
 DB_HOST='127.0.0.1'
@@ -21,11 +28,13 @@ DB_NAME='union_development'
 ```
 
 Run the migrations
+
 ```
 yarn run migrate
 ```
 
 ### Run
+
 ```
 yarn run dev
 ```

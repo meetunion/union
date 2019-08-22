@@ -4,8 +4,8 @@
   "description": "Union",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon --exec DEBUG=union:* node index",
+    "start": "babel-node index",
+    "dev": "nodemon --exec babel-node index",
     "lint": "eslint 'core/**/*.js' '*.js'",
     "migrate": "knex migrate:latest --knexfile ./core/db/knexfile.js",
     "rollback": "knex migrate:rollback --knexfile ./core/db/knexfile.js"
@@ -27,9 +27,14 @@
     "pg": "^7.9.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "eslint": "^5.15.2",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "prettier": "1.18.2"
   }
 }
